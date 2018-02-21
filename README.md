@@ -109,7 +109,7 @@ Quick  paragraph abot how I researched the problem
 This project is licensed under the 
 
 ## Acknowledgments & References
-
+* **Dr Ian McLoughlin** *lecturer of Graph Theory at G.M.I.T* [Ian McLoughlin](https://github.com/ianmcloughlin)
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
