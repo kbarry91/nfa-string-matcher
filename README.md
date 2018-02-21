@@ -108,8 +108,9 @@ Quick  paragraph abot how I researched the problem
 
 This project is licensed under the 
 
-## Acknowledgments
+## Acknowledgments & References
 
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
+* http://jacobappleton.io/2015/07/02/regex-ii-the-shunting-yard-algorithm/#tocAnchor-1-7
