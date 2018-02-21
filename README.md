@@ -113,4 +113,5 @@ This project is licensed under the
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
-* http://jacobappleton.io/2015/07/02/regex-ii-the-shunting-yard-algorithm/#tocAnchor-1-7
+* Shunting yard algorithim : http://jacobappleton.io/2015/07/02/regex-ii-the-shunting-yard-algorithm/#tocAnchor-1-7
+* Regular Expression Matching : https://swtch.com/~rsc/regexp/regexp1.html
