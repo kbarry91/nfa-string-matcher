@@ -6,6 +6,9 @@
 package main
 
 import (
+	"fmt"
+
+	thompsons "./thompsons"
 	utils "./utils"
 )
 
@@ -65,8 +68,14 @@ func main() {
 	*/
 	//var testString = userInput("Enter String to Test: ")
 
+	//  test shunting yard algorithim
 	//  test carried out using below values and ran correctly
 	//	test Converting an inﬁx regular expression (left) to postﬁx (right): a.(b.b)∗.a → abb.∗.a.
 	utils.StringPrinter("Regex: " + regex + "\n postfix :" + shunt(regex))
+
+	// test thompsons algorithim
+	NfaFragment := thompsons.PostToNfa("ab.c*|")
+	fmt.Println(NfaFragment)
+	//utils.StringPrinter(NfaFragment)
 	//stringPrinter("Regex: " + regex + "\nString: " + testString)
 }
