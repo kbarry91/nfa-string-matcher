@@ -6,28 +6,8 @@
 package main
 
 import (
-	"fmt"
+	utils "./utils"
 )
-
-/*
-	@param s a string to be printed
-*/
-func stringPrinter(s string) {
-	fmt.Println(s)
-}
-
-/*
-	@param s a string to be printed
-	s is what is needed by the system
-
-	@return UserInput a string entered by by user
-*/
-func userInput(s string) string {
-	var userInput string
-	stringPrinter(s)
-	fmt.Scan(&userInput)
-	return userInput
-}
 
 /*
 	shunt implements the shunting yard algorithim and converts an expression from infix to postfix notion
@@ -75,8 +55,8 @@ func shunt(infix string) string {
 
 func main() {
 	var myString = "NFA String Matcher Project"
-	stringPrinter(myString)
-	var regex = userInput("Enter Regex Expression: ")
+	utils.StringPrinter(myString)
+	var regex = utils.UserInput("Enter Regex Expression: ")
 
 	/*
 
@@ -87,6 +67,6 @@ func main() {
 
 	//  test carried out using below values and ran correctly
 	//	test Converting an inﬁx regular expression (left) to postﬁx (right): a.(b.b)∗.a → abb.∗.a.
-	stringPrinter("Regex: " + regex + "\nShunt :" + shunt(regex))
+	utils.StringPrinter("Regex: " + regex + "\n postfix :" + shunt(regex))
 	//stringPrinter("Regex: " + regex + "\nString: " + testString)
 }
