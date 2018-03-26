@@ -74,8 +74,8 @@ func main() {
 	utils.StringPrinter("Regex: " + regex + "\n postfix :" + shunt(regex))
 
 	// test thompsons algorithim
-	NfaFragment := thompsons.PostToNfa("ab.c*|")
-	fmt.Println(NfaFragment)
+	nfaFragment := thompsons.PostToNfa("ab.c*|")
+	fmt.Println(nfaFragment)
 	//utils.StringPrinter(NfaFragment)
 	//stringPrinter("Regex: " + regex + "\nString: " + testString)
 }
