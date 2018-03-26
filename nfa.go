@@ -7,6 +7,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 
 	thompsons "./thompsons"
 	utils "./utils"
@@ -78,4 +79,9 @@ func main() {
 	fmt.Println(nfaFragment)
 	//utils.StringPrinter(NfaFragment)
 	//stringPrinter("Regex: " + regex + "\nString: " + testString)
+
+	//test string matcher
+	isMatch := thompsons.StringMatcher("ab.c*|", "cccccccccccccccccccccccccc")
+
+	utils.StringPrinter("Does regex 'ab.c*|' match 'abc' :" + strconv.FormatBool(isMatch))
 }

@@ -3,6 +3,8 @@ Package thompsons is used to implement Thompsons construction of a pofix regular
 */
 package thompsons
 
+import "fmt"
+
 /*
 Represents a State in a nfa
 */
@@ -38,7 +40,7 @@ func PostToNfa(pofix string) *nfaFragment {
 			fragment1 := nfaStack[len(nfaStack)-1]
 			nfaStack = nfaStack[:len(nfaStack)-1]
 
-			// set fragment2 initial State as fragment1 accept
+			// set  fragment1 accept as fragment2 initial State
 			fragment1.accept.arrow1 = fragment2.initial
 			//append  pointer to NfaFragment to the nfaStack
 			nfaStack = append(nfaStack, &nfaFragment{initial: fragment1.initial, accept: fragment2.accept})
@@ -85,5 +87,74 @@ func PostToNfa(pofix string) *nfaFragment {
 
 		} // switch
 	} // for
+
+	// must handle and debug any issues
+	if len(nfaStack) != 1 {
+		fmt.Println("nfa Invalid", len(nfaStack), nfaStack)
+	}
 	return nfaStack[0]
+}
+
+/*
+stringMatcher compares a pofix expression to a string and returns either true or false
+*/
+func StringMatcher(pofix string, userInput string) bool {
+
+	// default isMatch to false
+	isMatch := false
+
+	// create nfa from regular expression
+	ponfa := PostToNfa(pofix)
+
+	// need to be able to access current state and the following next states
+
+	curState := []*state{}
+	nextState := []*state{}
+
+	//  add initial state of pofix nfa and all available states
+	curState = addNextState(curState[:], ponfa.initial, ponfa.accept)
+
+	// loop through the user entered string a character at a time
+	for _, char := range userInput {
+
+		// check all current states
+		for _, cur := range curState {
+
+			// if current state is set to the rune  add that state and other other state that can be accesed
+			if cur.symbol == char {
+				nextState = addNextState(nextState[:], cur.arrow1, ponfa.accept)
+			}
+		}
+		// swap curState with nextState to make the nextState the new curState for next iteration
+		curState, nextState = nextState, []*state{}
+	}
+
+	// iterate through the current states to check if they are accepted by nfa
+	for _, cur := range curState {
+
+		//if current state equals accept state of nfa
+		if cur == ponfa.accept {
+			isMatch = true
+			break
+		}
+	}
+	return isMatch
+}
+
+/*
+	addState gets the current statewhile checking if the state has a e arrow and follows the arrow  to get next states
+*/
+func addNextState(nextState []*state, s *state, a *state) []*state {
+	nextState = append(nextState, s)
+
+	// a s.symbol with 0 rune  means state has e arrows coming from it
+	if s != a && s.symbol == 0 {
+		nextState = addNextState(nextState, s.arrow1, a)
+
+		// if there is another edge/arrow it must be added
+		if s.arrow2 != nil {
+			nextState = addNextState(nextState, s.arrow2, a)
+		}
+	}
+	return nextState
 }
