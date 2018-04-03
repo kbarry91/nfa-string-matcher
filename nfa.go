@@ -8,6 +8,7 @@ package main
 import (
 	"strconv"
 
+	shuntingyard "./shuntingyard"
 	thompsons "./thompsons"
 	utils "./utils"
 )
@@ -74,6 +75,8 @@ func main() {
 	*/
 	//var testString = userInput("Enter String to Test: ")
 
+	// DEBUG : New shunting package
+	utils.StringPrinter("DEBUG:" + "  infix: " + regex + " postfix :" + shuntingyard.InfixToPostfix(regex))
 	//  test shunting yard algorithim
 	//  test carried out using below values and ran correctly
 	//	test Converting an inﬁx regular expression (left) to postﬁx (right): a.(b.b)∗.a → abb.∗.a.
