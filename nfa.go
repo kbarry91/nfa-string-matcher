@@ -6,7 +6,6 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 
 	thompsons "./thompsons"
@@ -20,7 +19,12 @@ import (
 	adapted from http://jacobappleton.io/2015/07/02/regex-ii-the-shunting-yard-algorithm/#tocAnchor-1-7
 */
 func shunt(infix string) string {
-	prec := map[rune]int{'*': 5, '.': 4, '|': 3} //order of precedence of characters
+
+	prec := map[rune]int{'*': 10, '+': 9, '.': 6, '|': 5} //order of precedence of characters
+	// * 0 or more
+	// + 1 or more
+	// . concatenate
+	// | or
 
 	postfix, stack := []rune{}, []rune{} //rune is a character as displayed on the screen(must convert back to string)
 
@@ -61,6 +65,7 @@ func main() {
 	var myString = "NFA String Matcher Project"
 	utils.StringPrinter(myString)
 	var regex = utils.UserInput("Enter Regex Expression: ")
+	var testString = utils.UserInput("Enter string to test:")
 
 	/*
 
@@ -72,16 +77,11 @@ func main() {
 	//  test shunting yard algorithim
 	//  test carried out using below values and ran correctly
 	//	test Converting an inﬁx regular expression (left) to postﬁx (right): a.(b.b)∗.a → abb.∗.a.
-	utils.StringPrinter("Regex: " + regex + "\n postfix :" + shunt(regex))
+	utils.StringPrinter("  infix: " + regex + "\n  postfix :" + shunt(regex))
+	utils.StringPrinter("  infix: ." + regex + ". \n  postfix :." + shunt(regex) + ".")
+	utils.StringPrinter("testString ." + testString + ".")
 
-	// test thompsons algorithim
-	nfaFragment := thompsons.PostToNfa("ab.c*|")
-	fmt.Println(nfaFragment)
-	//utils.StringPrinter(NfaFragment)
-	//stringPrinter("Regex: " + regex + "\nString: " + testString)
+	isMatch := thompsons.StringMatcher(shunt(regex), testString)
 
-	//test string matcher
-	isMatch := thompsons.StringMatcher("ab.c*|", "cccccccccccccccccccccccccc")
-
-	utils.StringPrinter("Does regex 'ab.c*|' match 'abc' :" + strconv.FormatBool(isMatch))
+	utils.StringPrinter("  Does regex " + regex + ",po" + shunt(regex) + " match " + testString + " :" + strconv.FormatBool(isMatch))
 }
