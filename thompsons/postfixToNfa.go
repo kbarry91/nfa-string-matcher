@@ -96,6 +96,17 @@ func PostToNfa(pofix string) *nfaFragment {
 			// add the fragment to the stack
 			nfaStack = append(nfaStack, &nfaFragment{initial: fragment.initial, accept: &accept})
 
+		case '?':
+			// pop offtsack
+			fragment := nfaStack[len(nfaStack)-1]
+			nfaStack = nfaStack[:len(nfaStack)-1]
+
+			// set initial state
+			initial := state{arrow1: fragment.initial, arrow2: fragment.accept}
+
+			// apend fragment to the stack
+			nfaStack = append(nfaStack, &nfaFragment{initial: &initial, accept: fragment.accept})
+
 		default:
 			accept := state{}
 			initial := state{symbol: r, arrow1: &accept}
