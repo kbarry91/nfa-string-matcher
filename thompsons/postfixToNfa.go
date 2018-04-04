@@ -76,18 +76,24 @@ func PostToNfa(pofix string) *nfaFragment {
 
 			fragment.accept.arrow1 = fragment.initial
 			fragment.accept.arrow2 = &accept
+
 			//append  pointer to NfaFragment to the nfaStack assigning new initial and accept State
 			nfaStack = append(nfaStack, &nfaFragment{initial: &initial, accept: &accept})
 
 		case '+':
+			// pop offtsack
 			fragment := nfaStack[len(nfaStack)-1]
 			nfaStack = nfaStack[:len(nfaStack)-1]
 
 			accept := state{}
+
+			//set initial state
 			initial := state{arrow1: fragment.initial, arrow2: &accept}
 
+			// loop the arrow to make initial  state accept state
 			fragment.accept.arrow1 = &initial
 
+			// add the fragment to the stack
 			nfaStack = append(nfaStack, &nfaFragment{initial: fragment.initial, accept: &accept})
 
 		default:
