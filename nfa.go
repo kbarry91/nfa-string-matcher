@@ -6,33 +6,41 @@
 package main
 
 import (
-	shuntingyard "./shuntingyard"
+	"strconv"
+
+	shuntingYard "./shuntingYard"
+	thompsons "./thompsons"
 	utils "./utils"
 )
 
 func main() {
-	var myString = "NFA String Matcher Project"
+	var myString = "============= NFA String Matcher Project ============="
 	utils.StringPrinter(myString)
-	var regex = utils.UserInput("Enter Regex Expression: ")
-	//var testString = utils.UserInput("Enter string to test:")
 
 	/*
 
 	   ------------TEST CODE------------
 
 	*/
-	//var testString = userInput("Enter String to Test: ")
+	// DEBUG : userInput
+	// TEST  : test input by entering a string
+	// RESULT: Passedtest
+	var testString = utils.UserInput("DEBUG INPUT: \n \tEnter String to Test: ")
+	utils.StringPrinter("DEBUG INPUT: \n \t " + testString)
 
 	// DEBUG : New shunting package
-	utils.StringPrinter("DEBUG:" + "  infix: " + regex + " postfix :" + shuntingyard.InfixToPostfix(regex))
-	//  test shunting yard algorithim
-	//  test carried out using below values and ran correctly
-	//	test Converting an inﬁx regular expression (left) to postﬁx (right): a.(b.b)∗.a → abb.∗.a.
-	//utils.StringPrinter("  infix: " + regex + "\n  postfix :" + shunt(regex))
-	//utils.StringPrinter("  infix: ." + regex + ". \n  postfix :." + shunt(regex) + ".")
-	//utils.StringPrinter("testString ." + testString + ".")
+	// TEST  : test Converting an inﬁx regular expression (left) to postﬁx (right): a.(b.b)∗.a → abb.∗.a.
+	// RESULT: Passedtest
+	var shunter = shuntingYard.InfixToPostfix("a.(b.b)∗.a")
+	utils.StringPrinter("DEBUG SHUNT:\n \t infix : a.(b.b)∗.a \n \t postfix :  " + shunter)
 
-	//isMatch := thompsons.StringMatcher(shunt(regex), testString)
+	// DEBUG :  Thompsons postfix to nfa and string matcher
+	// TEST  :  Enter a string a.+b, test against abbb (should return true)
+	// RESULT:  Test Passed
+	utils.StringPrinter("DEBUG THOMP:")
+	var testThomp = utils.UserInput("\t Enter Infix exp. :")
+	var testAlpha = utils.UserInput("\t Enter Test str.  :")
+	var isMatch = thompsons.StringMatcher(shuntingYard.InfixToPostfix(testThomp), testAlpha)
+	utils.StringPrinter("\t Comparison       :" + strconv.FormatBool(isMatch))
 
-	//utils.StringPrinter("  Does regex " + regex + ",po" + shunt(regex) + " match " + testString + " :" + strconv.FormatBool(isMatch))
 }
