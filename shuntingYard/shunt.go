@@ -13,9 +13,10 @@ package shuntingyard
 */
 func InfixToPostfix(infix string) string {
 
-	prec := map[rune]int{'*': 10, '+': 9, '.': 6, '|': 5} //order of precedence of characters
+	prec := map[rune]int{'*': 10, '+': 9, '?': 8, '.': 6, '|': 5} //order of precedence of characters
 	// * 0 or more
 	// + 1 or more
+	// ? Makes quantifiers "lazy"  as states at http://www.rexegg.com/regex-quickstart.html
 	// . concatenate
 	// | or
 
