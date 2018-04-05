@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 In order to debug this Application you must have **Visual Studio Code** installed.
 [How to install Visual Studio Code](https://code.visualstudio.com/download )
 
-To run the g programming language you must install the go programming language[How to install go](https://golang.org/dl/)
+To run a Go program you must install the **Go Programming language** [How to install go](https://golang.org/dl/)
 
 ### How to Run and Debug the Project using Visual Studio Code
 
@@ -69,7 +69,7 @@ Show what the library does as concisely as possible, developers should be able t
 
 | Pattern                      | Description                                                 |
 |:----------------------------:| ----------------------------------------------------------- |
-| `1`, `0`, …                  | Simple match looking for the specified character            |
+| `a`, `b`, …                  | Simple match looking for the specified character            |
 | `.`                          | Wildcard: match any character                               |
 | `1\|0`                       | Alternation: match either `a` or `b`                        |
 | `a*`                         | Repetition: match `a` zero or more times                    |
@@ -103,6 +103,7 @@ Add additional notes about how to deploy this on a live system
 ## Research 
 
 Quick  paragraph abot how I researched the problem
+see [References used for research](##acknowledgments-&-references)
 
 ## Authors
 
@@ -112,10 +113,9 @@ Quick  paragraph abot how I researched the problem
 
 This project is licensed under the 
 
-## Acknowledgments & References
+(##acknowledgments-&-references)
 * **Dr Ian McLoughlin** *lecturer of Graph Theory at G.M.I.T* [Ian McLoughlin](https://github.com/ianmcloughlin)
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+
 * Shunting yard algorithim : http://jacobappleton.io/2015/07/02/regex-ii-the-shunting-yard-algorithm/#tocAnchor-1-7
 * Regular Expression Matching : https://swtch.com/~rsc/regexp/regexp1.html
+* Regex Cheat Sheat : http://www.rexegg.com/regex-quickstart.html
