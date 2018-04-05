@@ -113,7 +113,7 @@ see [References used for research](##acknowledgments-&-references)
 
 This project is licensed under the 
 
-[##Acknowledgments-&-References]
+##Acknowledgments-&-References
 * **Dr Ian McLoughlin** *lecturer of Graph Theory at G.M.I.T* [Ian McLoughlin](https://github.com/ianmcloughlin)
 
 * Shunting yard algorithim : http://jacobappleton.io/2015/07/02/regex-ii-the-shunting-yard-algorithm/#tocAnchor-1-7
