@@ -63,7 +63,7 @@ go run nfa.go
 
 ## Example Use
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+ADD SCREENSHOTS OF RUNNINHG PROGRAM AND TESTS
 
 ## Supported Regex Syntax
 
@@ -89,12 +89,6 @@ Explain what these tests test and why
 Give an example
 ```
 
-
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
 ## Built With
 
 * Visual Studio Code
@@ -102,7 +96,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Research 
 
-Quick  paragraph abot how I researched the problem
+Quick  paragraph abot how I researched the problem.
 see [References used for research](##acknowledgments-&-references)
 
 ## Authors
@@ -113,7 +107,7 @@ see [References used for research](##acknowledgments-&-references)
 
 This project is licensed under the 
 
-##Acknowledgments-&-References
+## Acknowledgments & References
 * **Dr Ian McLoughlin** *lecturer of Graph Theory at G.M.I.T* [Ian McLoughlin](https://github.com/ianmcloughlin)
 
 * Shunting yard algorithim : http://jacobappleton.io/2015/07/02/regex-ii-the-shunting-yard-algorithm/#tocAnchor-1-7
