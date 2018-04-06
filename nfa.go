@@ -15,7 +15,8 @@ import (
 )
 
 func main() {
-	var titleBar = "============= NFA String Matcher Project ============="
+	var titleBar = "============= NFA String Main Menu ============="
+	var subMenuBar = "============= String Matcher Menu  ============="
 	//utils.StringPrinter(myString)
 
 	// loop to keep main menu open
@@ -24,8 +25,26 @@ func main() {
 		utils.StringPrinter("\n" + titleBar)
 		options := utils.UserInput("1. Launch Program\n2. Launch test Mode \n3. Exit")
 		switch options {
+
 		case "1":
-			utils.StringPrinter("Run Program Selected ....")
+			utils.StringPrinter("Launch Program Selected ....")
+			returnToMain := false
+			for !returnToMain {
+				utils.StringPrinter("\n" + subMenuBar)
+				progOption := utils.UserInput("1. Match String\n2. Match File \n3. Return To Main")
+				switch progOption {
+				case "1":
+					utils.StringPrinter("String Match Selected ....")
+				case "2":
+					utils.StringPrinter("File Match Selected ....")
+				case "3":
+					fmt.Println("Returning To main menu  ....")
+					returnToMain = true
+				default:
+					fmt.Println("Invalid Option")
+					continue
+				}
+			}
 			break
 		case "2":
 			utils.StringPrinter("Test Mode Selected ....")
@@ -45,7 +64,7 @@ func main() {
 }
 
 /**
-TestMode fun is used for developer debug
+TestMode func is a main menu option used for developer debug
 */
 func TestMode() {
 	/*
