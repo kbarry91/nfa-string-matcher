@@ -6,7 +6,6 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 
 	shuntingYard "./shuntingYard"
@@ -38,10 +37,10 @@ func main() {
 				case "2":
 					utils.StringPrinter("File Match Selected ....")
 				case "3":
-					fmt.Println("Returning To main menu  ....")
+					utils.StringPrinter("Returning To main menu  ....")
 					returnToMain = true
 				default:
-					fmt.Println("Invalid Option")
+					utils.StringPrinter("Invalid Option")
 					continue
 				}
 			}
@@ -51,11 +50,11 @@ func main() {
 			TestMode()
 			break
 		case "3":
-			fmt.Println("Exiting Program ....")
+			utils.StringPrinter("Exiting Program ....")
 			keepRunning = false
 			break
 		default:
-			fmt.Println("Invalid Option")
+			utils.StringPrinter("Invalid Option")
 			continue
 		}
 
