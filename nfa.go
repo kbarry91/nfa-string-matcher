@@ -34,6 +34,7 @@ func main() {
 				switch progOption {
 				case "1":
 					utils.StringPrinter("String Match Selected ....")
+					StringMatchMode()
 				case "2":
 					utils.StringPrinter("File Match Selected ....")
 				case "3":
@@ -62,9 +63,9 @@ func main() {
 
 }
 
-/**
-TestMode func is a main menu option used for developer debug
-*/
+/*
+* TestMode func is a main menu option used for developer debug
+ */
 func TestMode() {
 	/*
 
@@ -91,5 +92,27 @@ func TestMode() {
 	var testAlpha = utils.UserInput("\t Enter Test str.  :")
 	var isMatch = thompsons.StringMatcher(shuntingYard.InfixToPostfix(testThomp), testAlpha)
 	utils.StringPrinter("\t Comparison       :" + strconv.FormatBool(isMatch))
+
+}
+
+/*
+* StringMatchMode allows user to enter a regular expression and test it aginst a string
+ */
+func StringMatchMode() {
+	var userString = utils.UserInput("\tEnter String to Test: ")
+	var userExp = utils.UserInput("\tEnter Regular Expression :")
+	var isMatch = thompsons.StringMatcher(shuntingYard.InfixToPostfix(userExp), userString)
+	switch isMatch {
+	case true:
+		utils.StringPrinter("\tMatch found for " + userExp + " in " + userString)
+		break
+	case false:
+		utils.StringPrinter("\tNo Match found for " + userExp + " in " + userString)
+		break
+	default:
+		utils.StringPrinter("\tAn error has occurred ,Please check regex expression and try again")
+		break
+
+	}
 
 }
