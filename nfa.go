@@ -6,6 +6,7 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 
 	shuntingYard "./shuntingYard"
@@ -14,9 +15,39 @@ import (
 )
 
 func main() {
-	var myString = "============= NFA String Matcher Project ============="
-	utils.StringPrinter(myString)
+	var titleBar = "============= NFA String Matcher Project ============="
+	//utils.StringPrinter(myString)
 
+	// loop to keep main menu open
+	keepRunning := true
+	for keepRunning {
+		utils.StringPrinter("\n" + titleBar)
+		options := utils.UserInput("1. Launch Program\n2. Launch test Mode \n3. Exit")
+		switch options {
+		case "1":
+			utils.StringPrinter("Run Program Selected ....")
+			break
+		case "2":
+			utils.StringPrinter("Test Mode Selected ....")
+			TestMode()
+			break
+		case "3":
+			fmt.Println("Exiting Program ....")
+			keepRunning = false
+			break
+		default:
+			fmt.Println("Invalid Option")
+			continue
+		}
+
+	}
+
+}
+
+/**
+TestMode fun is used for developer debug
+*/
+func TestMode() {
 	/*
 
 	   ------------TEST CODE------------
