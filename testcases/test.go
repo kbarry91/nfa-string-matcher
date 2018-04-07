@@ -11,16 +11,17 @@ TestMenu launches a menu to select a test*/
 func TestMenu() {
 	var testMenu = "============= Test  Menu  ============="
 	returnToMain := false
+
 	for !returnToMain {
 		utils.StringPrinter("\n" + testMenu)
 		progOption := utils.UserInput("1. Test String Concatenate \n2. Test Infix to Pofix \n3. Test String Input \n4. Return To Main")
+
 		switch progOption {
 		case "1":
 			TestConcat()
 		case "2":
-			utils.StringPrinter("test infix to pofix Selected ....")
+			TestInfixToPostfix()
 		case "3":
-			utils.StringPrinter("Test input Selected ....")
 			TestInput()
 		case "4":
 			utils.StringPrinter("Returning To main menu  ....")
@@ -48,9 +49,24 @@ func TestConcat() {
 TestInput testsUserInput Method
 */
 func TestInput() {
+	utils.StringPrinter("Test input Selected ....")
+
 	// DEBUG : userInput
 	// TEST  : test input by entering a string
 	// RESULT: Passedtest
 	var testString = utils.UserInput("DEBUG INPUT: \n \tEnter String to Test: ")
 	utils.StringPrinter("DEBUG INPUT: \n \t " + testString)
+}
+
+/*
+TestInfixToPostfix tests the shunting yard algorithim
+*/
+func TestInfixToPostfix() {
+	utils.StringPrinter("test infix to pofix Selected ....")
+
+	// DEBUG : InfixToPostfix
+	// TEST  : test Converting an inﬁx regular expression (left) to postﬁx (right): a.(b.b)∗.a → abb.∗.a.
+	// RESULT: Passedtest
+	var shunter = shuntingYard.InfixToPostfix("a.(b.b)∗.a")
+	utils.StringPrinter("DEBUG SHUNT:\n \t infix : a.(b.b)∗.a \n \t postfix :  " + shunter)
 }
