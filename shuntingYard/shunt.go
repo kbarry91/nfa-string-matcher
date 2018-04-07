@@ -7,6 +7,8 @@ package shuntingyard
 import (
 	"bytes"
 	"fmt"
+
+	utils "../utils"
 )
 
 /*
@@ -68,10 +70,15 @@ func ConcatenateInfix(infix string) string {
 	strArr := []rune(infix)
 
 	// loop through the infix
-	for curChar := 0; curChar < len(infix); curChar++ {
+	for curChar := 0; curChar < len(strArr); curChar++ {
 
 		// if it is the first character append to buffer
 		if charIsFirst(curChar) {
+			buffer.WriteString(string(strArr[curChar]))
+			continue
+		}
+		// if previous character is already concatenate operator
+		if isConChar(string(strArr[curChar-1])) {
 			buffer.WriteString(string(strArr[curChar]))
 			continue
 		}
@@ -137,14 +144,23 @@ func isClosingBracket(char string) bool {
 	}
 	return false
 }
+
 func isSpecials(char string) bool {
 
 	specials := []string{"*", "+", "?", ".", "|"}
 
 	for spec := range specials {
 		if char == specials[spec] {
+			utils.StringPrinter(char)
 			return true
+
 		}
+	}
+	return false
+}
+func isConChar(char string) bool {
+	if char == "." {
+		return true
 	}
 	return false
 }
