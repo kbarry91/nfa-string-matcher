@@ -66,13 +66,53 @@ func ConcatenateInfix(infix string) string {
 
 	var buffer bytes.Buffer
 	strArr := []rune(infix)
+
+	// loop through the infix
 	for curChar := 0; curChar < len(infix); curChar++ {
 
-		if !charIsFirst(curChar) {
+		// if it is the first character
+		if charIsFirst(curChar) {
 			buffer.WriteString(string(strArr[curChar]))
 			//buffer += (infix[curChar])
-			buffer.WriteString(".")
+			continue
 		}
+
+		// if char is a special character return it the way it is
+		if isSpecials(string(strArr[curChar])) {
+			buffer.WriteString(string(strArr[curChar]))
+			continue
+		}
+		// if char is a opening bracket and not first char
+		if !charIsFirst(curChar) && isOpeningBracket(string(strArr[curChar])) {
+			buffer.WriteString(".")
+			buffer.WriteString(string(strArr[curChar]))
+			continue
+		}
+		// if char is not first and previous was not  (
+		if !charIsFirst(curChar) && isOpeningBracket(string(strArr[curChar-1])) {
+
+			buffer.WriteString(string(strArr[curChar]))
+			continue
+		}
+		/*
+			// if char is not first or last character and next is   )
+			if !(curChar == len(infix)-1) {
+				if !charIsFirst(curChar) && isClosingBracket(string(strArr[curChar])) {
+					//	buffer.WriteString(".")
+					buffer.WriteString(string(strArr[curChar]))
+					continue
+				}
+			}
+
+		*/
+		//if character is closing bracket
+		if isClosingBracket(string(strArr[curChar])) {
+
+			buffer.WriteString(string(strArr[curChar]))
+			continue
+		}
+		buffer.WriteString(".")
+		buffer.WriteString(string(strArr[curChar]))
 
 	}
 
@@ -83,6 +123,29 @@ func ConcatenateInfix(infix string) string {
 func charIsFirst(index int) bool {
 	if index == 0 {
 		return true
+	}
+	return false
+}
+func isOpeningBracket(char string) bool {
+	if char == "(" {
+		return true
+	}
+	return false
+}
+func isClosingBracket(char string) bool {
+	if char == ")" {
+		return true
+	}
+	return false
+}
+func isSpecials(char string) bool {
+
+	specials := []string{"*", "+", "?", ".", "|"}
+
+	for spec := range specials {
+		if char == specials[spec] {
+			return true
+		}
 	}
 	return false
 }
