@@ -4,8 +4,13 @@
 
 package shuntingyard
 
+import (
+	"bytes"
+	"fmt"
+)
+
 /*
-	infixToPostfix implements the shunting yard algorithim and converts an expression from infix to postfix notion
+	InfixToPostfix implements the shunting yard algorithim and converts an expression from infix to postfix notion
 
 	@param infix an expression in infux notation
 	@returns a string postfix expresion
@@ -53,4 +58,31 @@ func InfixToPostfix(infix string) string {
 	}
 
 	return string(postfix)
+}
+
+// ConcatenateInfix function  takes a infix expression and adds the concatenation "." where need to make expression valid
+// https://stackoverflow.com/questions/1760757/how-to-efficiently-concatenate-strings-in-go
+func ConcatenateInfix(infix string) string {
+
+	var buffer bytes.Buffer
+	strArr := []rune(infix)
+	for curChar := 0; curChar < len(infix); curChar++ {
+
+		if !charIsFirst(curChar) {
+			buffer.WriteString(string(strArr[curChar]))
+			//buffer += (infix[curChar])
+			buffer.WriteString(".")
+		}
+
+	}
+
+	fmt.Println(buffer.String())
+	return buffer.String()
+}
+
+func charIsFirst(index int) bool {
+	if index == 0 {
+		return true
+	}
+	return false
 }

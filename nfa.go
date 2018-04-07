@@ -16,6 +16,7 @@ import (
 func main() {
 	var titleBar = "============= NFA String Main Menu ============="
 	var subMenuBar = "============= String Matcher Menu  ============="
+	//	var testMenu = "============= Test  Menu  ============="
 	//utils.StringPrinter(myString)
 
 	// loop to keep main menu open
@@ -48,6 +49,26 @@ func main() {
 			break
 		case "2":
 			utils.StringPrinter("Test Mode Selected ....")
+			//returnToMain := false
+			/*
+				for !returnToMain {
+					utils.StringPrinter("\n" + subMenuBar)
+					progOption := utils.UserInput("1. Match String\n2. Match File \n3. Return To Main")
+					switch progOption {
+					case "1":
+						utils.StringPrinter("String Match Selected ....")
+						StringMatchMode()
+					case "2":
+						utils.StringPrinter("File Match Selected ....")
+					case "3":
+						utils.StringPrinter("Returning To main menu  ....")
+						returnToMain = true
+					default:
+						utils.StringPrinter("Invalid Option")
+						continue
+					}
+				}
+			*/
 			TestMode()
 			break
 		case "3":
@@ -63,15 +84,21 @@ func main() {
 
 }
 
-/*
-* TestMode func is a main menu option used for developer debug
- */
+//
+// TestMode func is a main menu option used for developer debug
+//
 func TestMode() {
 	/*
 
 	   ------------TEST CODE------------
 
 	*/
+	// DEBUG : userInput
+	// TEST  : test input by entering a string
+	// RESULT: Passedtest
+	var testCat = utils.UserInput("DEBUG Concat: \n \tEnter String to Test: ")
+	utils.StringPrinter("DEBUG Concat: \n \t" + testCat + " adapts to " + shuntingYard.ConcatenateInfix(testCat))
+
 	// DEBUG : userInput
 	// TEST  : test input by entering a string
 	// RESULT: Passedtest
@@ -95,9 +122,9 @@ func TestMode() {
 
 }
 
-/*
-* StringMatchMode allows user to enter a regular expression and test it aginst a string
- */
+//
+// StringMatchMode allows user to enter a regular expression and test it aginst a string
+//
 func StringMatchMode() {
 	var userString = utils.UserInput("\tEnter String to Test: ")
 	var userExp = utils.UserInput("\tEnter Regular Expression :")
