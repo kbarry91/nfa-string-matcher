@@ -60,7 +60,7 @@ func InfixToPostfix(infix string) string {
 	return string(postfix)
 }
 
-// ConcatenateInfix function  takes a infix expression and adds the concatenation "." where need to make expression valid
+// ConcatenateInfix function  takes a infix expression and adds the concatenation "." where needed to make expression valid
 // https://stackoverflow.com/questions/1760757/how-to-efficiently-concatenate-strings-in-go
 func ConcatenateInfix(infix string) string {
 
@@ -70,14 +70,13 @@ func ConcatenateInfix(infix string) string {
 	// loop through the infix
 	for curChar := 0; curChar < len(infix); curChar++ {
 
-		// if it is the first character
+		// if it is the first character append to buffer
 		if charIsFirst(curChar) {
 			buffer.WriteString(string(strArr[curChar]))
-			//buffer += (infix[curChar])
 			continue
 		}
 
-		// if char is a special character return it the way it is
+		// if char is a special character append to buffer
 		if isSpecials(string(strArr[curChar])) {
 			buffer.WriteString(string(strArr[curChar]))
 			continue
@@ -105,7 +104,7 @@ func ConcatenateInfix(infix string) string {
 			}
 
 		*/
-		//if character is closing bracket
+		//if character is closing bracket add to buffer
 		if isClosingBracket(string(strArr[curChar])) {
 
 			buffer.WriteString(string(strArr[curChar]))

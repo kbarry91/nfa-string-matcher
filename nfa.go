@@ -9,6 +9,7 @@ import (
 	"strconv"
 
 	shuntingYard "./shuntingYard"
+	testcases "./testcases"
 	thompsons "./thompsons"
 	utils "./utils"
 )
@@ -49,27 +50,9 @@ func main() {
 			break
 		case "2":
 			utils.StringPrinter("Test Mode Selected ....")
-			//returnToMain := false
-			/*
-				for !returnToMain {
-					utils.StringPrinter("\n" + subMenuBar)
-					progOption := utils.UserInput("1. Match String\n2. Match File \n3. Return To Main")
-					switch progOption {
-					case "1":
-						utils.StringPrinter("String Match Selected ....")
-						StringMatchMode()
-					case "2":
-						utils.StringPrinter("File Match Selected ....")
-					case "3":
-						utils.StringPrinter("Returning To main menu  ....")
-						returnToMain = true
-					default:
-						utils.StringPrinter("Invalid Option")
-						continue
-					}
-				}
-			*/
-			TestMode()
+			testcases.TestMenu()
+
+			//TestMode()
 			break
 		case "3":
 			utils.StringPrinter("Exiting Program ....")
@@ -93,11 +76,6 @@ func TestMode() {
 	   ------------TEST CODE------------
 
 	*/
-	// DEBUG : userInput
-	// TEST  : test input by entering a string
-	// RESULT: Passedtest
-	var testCat = utils.UserInput("DEBUG Concat: \n \tEnter String to Test: ")
-	utils.StringPrinter("DEBUG Concat: \n \t" + testCat + " adapts to " + shuntingYard.ConcatenateInfix(testCat))
 
 	// DEBUG : userInput
 	// TEST  : test input by entering a string
