@@ -20,7 +20,7 @@ A program written in Golang that can build a non-deterministic finite automaton 
   * [Limitiations Of The Program](#limitiations-of-the-program)
   * [Authors](#authors)
   * [Acknowledgments & References](#acknowledgments-and-references)
-
+  * [Screenshot](*screenshot)
 
 ## Synopsis
 The probem as stated in the the problem statement provided to us states _'You must write a program in the Go programming language [2] that can build a non-deterministic ﬁnite automaton (NFA) from a regular expression, and can use the NFA to check if the regular expression matches any given string of text. You must write the program from scratch and cannot use the regexp package from the Go standard library nor any other external library.'_
@@ -136,7 +136,8 @@ Found 49 matches in file!
 - If concatenator syntax not included adjust the statement.
 - Check if expression is Infix or Postfix.
 - If Infix , Convert to Postfix.
-- Construct a NFA
+- Construct a NFA fragment for each condition.  
+- Join the frgaments to Construct a final NFA.
 - Check the NFA against a given String.
 - Output statistics and result.
 
@@ -149,7 +150,7 @@ I have adjusted the program to adapt to the user input . That meaning if the exp
 | `a.b.c`                      | `a.b.c`                  | `ab.c`                 |
 | `abc(d|e)`                   | `a.b.c.(d|e)`            | `ab.c.de|.`            |
 | `a?b?c?`                     | `a?.b?.c?`               | `a?b?.c?.`             |
-| `00(0|1)*`                   |`0.0.(0|1)*`              | `00.01|*.`             |
+| `00(0|1)*`                   | `0.0.(0|1)*`             | `00.01|*.`             |
 
 
 | Pattern                      | Description                                                 |
@@ -197,3 +198,8 @@ In order to debug the program extensively and repetitively the program was devel
 * Regular Expression Matching : https://swtch.com/~rsc/regexp/regexp1.html
 * Regex Cheat Sheat : http://www.rexegg.com/regex-quickstart.html
 * Introuction To The Theory Of computation : http://fuuu.be/polytech/INFOF408/Introduction-To-The-Theory-Of-Computation-Michael-Sipser.pdf
+
+## Screenshot
+<p align="center">
+<a href="https://imgur.com/nH9QFqU"><img src="https://i.imgur.com/nH9QFqU.png" title="source: imgur.com" /></a>
+</p>
