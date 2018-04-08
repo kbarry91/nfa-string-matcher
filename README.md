@@ -46,7 +46,9 @@ To run a Go program you must install the **Go Programming language** [How to ins
 - Unzip the full folder
 - Open visual studio code
 - Navigate to 
+
 > File > Open Folder..
+
 - Select the unzipped solution
 
 ##### Alternativily using GIT
@@ -54,8 +56,11 @@ To run a Go program you must install the **Go Programming language** [How to ins
 - Create a new folder to hold the project
 - Set up a git repository
 - Navigate to directory of project in CMD
+
 >Git init
+
 >Git remote add origin https://github.com/kbarry91/nfa-string-matcher.git
+
 >Git pull origin master
 
 ### How to run the program
