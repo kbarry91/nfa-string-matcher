@@ -171,7 +171,7 @@ I have adjusted the program to adapt to the user input . That meaning if the exp
 
 ## Research And Design Process
 
-see [References used for research](##acknowledgments-and-references)
+see [References used for research](#acknowledgments-and-references)
 
 Initially on recieving this project I honestly felt it was out of the scope of my capabilities. For this reason I did not dive straight into the coding process.I  spent my first 2 weeks studying and researching about regular expressions and Finite Automota to ensure I had a clear understanding of what needed to be done. I found a brillant pdf online called **Introduction To The Theory Of Computation** by _Michael-Sipser*_ which can be downloaded [here](http://fuuu.be/polytech/INFOF408/Introduction-To-The-Theory-Of-Computation-Michael-Sipser.pdf)  which really goes into detail about the algorithims behind regular expresions.
 
@@ -198,6 +198,7 @@ In order to debug the program extensively and repetitively the program was devel
 * Regular Expression Matching : https://swtch.com/~rsc/regexp/regexp1.html
 * Regex Cheat Sheat : http://www.rexegg.com/regex-quickstart.html
 * Introuction To The Theory Of computation : http://fuuu.be/polytech/INFOF408/Introduction-To-The-Theory-Of-Computation-Michael-Sipser.pdf
+* Please note any adapted code snippets have been referenced in the code.
 
 ## Screenshot
 <p align="center">
