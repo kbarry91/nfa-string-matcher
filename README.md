@@ -2,10 +2,10 @@
 
 A program written in Golang that can build a non-deterministic finite automaton (NFA) from a regular expression and check it against any given string.
 
-### Synopsis
+## Synopsis
 The probem as stated in the the problem statement provided to us states _'You must write a program in the Go programming language [2] that can build a non-deterministic ﬁnite automaton (NFA) from a regular expression, and can use the NFA to check if the regular expression matches any given string of text. You must write the program from scratch and cannot use the regexp package from the Go standard library nor any other external library.'_
 
-### Motivation
+## Motivation
 
 This program was developed as a project for the Module 'Graph Theory'. Graph Theory is a fundimental concept in Computer science and for that reason is added to the third year course work for Software Developement in GMIT Galway.
 
@@ -38,7 +38,7 @@ To run a Go program you must install the **Go Programming language** [How to ins
 >Git remote add origin https://github.com/kbarry91/nfa-string-matcher.git
 >Git pull origin master
 
-#### How to run the program
+### How to run the program
 This program uses the Go programming language.
 If you do not currently have Go installed click on the following link to download [INSTALL GO](https://golang.org/dl/)
 
@@ -132,17 +132,6 @@ I have adjusted the program to adapt to the user input . That meaning if the exp
 | `a?`                         | Option: match `a` zero or one times                         |
 | `(ab)`                       | Grouping                                                    |
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Built With
 
@@ -170,16 +159,10 @@ I decided to add file reading to improve the user expierence, I felt this was a 
 In order to debug the program extensively and repetitively the program was developed with a Test Mode option when launched.This allowed me to test as much as possible in the quickest manner. I found that while entering and expression works perfectly, If an expression is copy and pasted into the program it causes inconsistencies in the result.
 
 ## Authors
-
 * **Kevin Barry** - *Initial work* - [kbarry91](https://github.com/kbarry91)
-
-## License
-
-This project is licensed under the 
 
 ## Acknowledgments & References
 * **Dr Ian McLoughlin** *lecturer of Graph Theory at G.M.I.T* [Ian McLoughlin](https://github.com/ianmcloughlin)
-
 * Shunting yard algorithim : http://jacobappleton.io/2015/07/02/regex-ii-the-shunting-yard-algorithm/#tocAnchor-1-7
 * Regular Expression Matching : https://swtch.com/~rsc/regexp/regexp1.html
 * Regex Cheat Sheat : http://www.rexegg.com/regex-quickstart.html
