@@ -6,8 +6,6 @@
 package main
 
 import (
-	"strconv"
-
 	shuntingYard "./shuntingYard"
 	testcases "./testcases"
 	thompsons "./thompsons"
@@ -32,7 +30,7 @@ func main() {
 			returnToMain := false
 			for !returnToMain {
 				utils.StringPrinter("\n" + subMenuBar)
-				progOption := utils.UserInput("1. Match String\n2. Match File \n3. Return To Main")
+				progOption := utils.UserInput("1. Match String\n2. Find in File \n3. Return To Main")
 				switch progOption {
 				case "1":
 					utils.StringPrinter("String Match Selected ....")
@@ -68,27 +66,6 @@ func main() {
 }
 
 //
-// TestMode func is a main menu option used for developer debug
-//
-func TestMode() {
-	/*
-
-	   ------------TEST CODE------------
-
-	*/
-
-	// DEBUG :  Thompsons postfix to nfa and string matcher
-	// TEST  :  Enter a string a.+b, test against abbb (should return true)
-	// RESULT:  Test Passed
-	utils.StringPrinter("DEBUG THOMP:")
-	var testThomp = utils.UserInput("\t Enter Infix exp. :")
-	var testAlpha = utils.UserInput("\t Enter Test str.  :")
-	var isMatch = thompsons.StringMatcher(shuntingYard.InfixToPostfix(testThomp), testAlpha)
-	utils.StringPrinter("\t Comparison       :" + strconv.FormatBool(isMatch))
-
-}
-
-//
 // StringMatchMode allows user to enter a regular expression and test it aginst a string
 //
 func StringMatchMode() {
@@ -112,15 +89,22 @@ func StringMatchMode() {
 	utils.StringPrinter("Postfix          : " + regexExpression)
 	switch isMatch {
 	case true:
-		utils.StringPrinter("\tMatch found for " + regexExpression + " in " + userString)
+		utils.StringPrinter("\tMatch found for " + regexExpression + " in " + userString + " !")
 		break
 	case false:
-		utils.StringPrinter("\tNo Match found for " + regexExpression + " in " + userString)
+		utils.StringPrinter("\tNo Match found for " + regexExpression + " in " + userString + ".")
 		break
 	default:
 		utils.StringPrinter("\tAn error has occurred ,Please check regex expression and try again")
 		break
 
 	}
+
+}
+
+/*
+FileFindMode enables a user to search the occurences of a matched sexpression in a file
+*/
+func FileFindMode() {
 
 }
