@@ -21,11 +21,11 @@ func check(e error) {
 LoadDataFromFile Loads data from a file and returns a slice of words
 */
 func LoadDataFromFile() []string {
-	
+
 	//filename := utils.UserInput("Enter File Name: ( 'deadlock.txt' )")
 
 	// read from the file
-	file, err := ioutil.ReadFile("..data/deadlock.txt")
+	file, err := ioutil.ReadFile("data/deadlock.txt")
 	check(err)
 
 	// Parse the file to a string

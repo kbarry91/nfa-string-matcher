@@ -5,6 +5,8 @@ package testcases
 
 import utils "../utils"
 import shuntingYard "../shuntingYard"
+import filereader "../filereader"
+
 
 /*
 TestMenu launches a menu to select a test*/
@@ -14,7 +16,7 @@ func TestMenu() {
 
 	for !returnToMain {
 		utils.StringPrinter("\n" + testMenu)
-		progOption := utils.UserInput("1. Test String Concatenate \n2. Test Infix to Pofix \n3. Test String Input \n4. Return To Main")
+		progOption := utils.UserInput("1. Test String Concatenate \n2. Test Infix to Pofix \n3. Test String Input \n4. Test File Read \n5. Return To Main")
 
 		switch progOption {
 		case "1":
@@ -24,6 +26,8 @@ func TestMenu() {
 		case "3":
 			TestInput()
 		case "4":
+			TestFile()
+		case "5":
 			utils.StringPrinter("Returning To main menu  ....")
 			returnToMain = true
 		default:
@@ -69,4 +73,21 @@ func TestInfixToPostfix() {
 	// RESULT: Passedtest
 	var shunter = shuntingYard.InfixToPostfix("a.(b.b)∗.a")
 	utils.StringPrinter("DEBUG SHUNT:\n \t infix : a.(b.b)∗.a \n \t postfix :  " + shunter)
+}
+
+/*
+TestFile tests the filereader
+*/
+func TestFile(){
+
+	// Load a file
+	fileWords := filereader.LoadDataFromFile()
+
+	if len(fileWords) > 1{
+		utils.StringPrinter("DEBUG File:\n \tFile read succesfull")
+
+	}else{
+		utils.StringPrinter("DEBUG File:\n \tFile read unsuccesfull")
+	}
+
 }
