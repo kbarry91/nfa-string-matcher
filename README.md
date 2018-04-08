@@ -2,6 +2,26 @@
 
 A program written in Golang that can build a non-deterministic finite automaton (NFA) from a regular expression and check it against any given string.
 
+- [Regular Expression To Non-deterministic Finite Automaton](#regular-expression-to-non-deterministic-finite-automaton)
+  * [Synopsis](#synopsis)
+  * [Motivation](#motivation)
+  * [Getting Started & Installing Required Softwares](#getting-started-and-installing-required-softwares)
+    + [How to Run and Debug the Project using Visual Studio Code](#how-to-run-and-debug-the-project-using-visual-studio-code)
+        * [Using the zip file](#using-the-zip-file)
+        * [Alternativily using GIT](#alternativily-using-git)
+    + [How to run the program](#how-to-run-the-program)
+  * [Running the Tests](#running-the-tests)
+    + [Test A Entered Expression Against an Entered String](#test-an-entered-expression-against-an-entered-string)
+    + [Test A Entered Expression Against a File](#test-an-entered-expression-against-a-file)
+  * [Operational Flow Of Program](#operational-flow-of-program)
+  * [Supported Regex Syntax](#supported-regex-syntax)
+  * [Built With](#built-with)
+  * [Research & Design Process](#research-and-design-process)
+  * [Limitiations Of The Program](#limitiations-of-the-program)
+  * [Authors](#authors)
+  * [Acknowledgments & References](#acknowledgments-and-references)
+
+
 ## Synopsis
 The probem as stated in the the problem statement provided to us states _'You must write a program in the Go programming language [2] that can build a non-deterministic ﬁnite automaton (NFA) from a regular expression, and can use the NFA to check if the regular expression matches any given string of text. You must write the program from scratch and cannot use the regexp package from the Go standard library nor any other external library.'_
 
@@ -9,7 +29,7 @@ The probem as stated in the the problem statement provided to us states _'You mu
 
 This program was developed as a project for the Module 'Graph Theory'. Graph Theory is a fundimental concept in Computer science and for that reason is added to the third year course work for Software Developement in GMIT Galway.
 
-## Getting Started & Installing Required Softwares
+## Getting Started And Installing Required Softwares
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -62,7 +82,7 @@ go run nfa.go
 
 ## Running the Tests
 - The program has both a Launch Program and Test Mode. As running test mode is self explanitory I will describe how to run the main application. 
-### Test A Entered Expression Against a Entered String
+### Test An Entered Expression Against An Entered String
 To allow future developement advancements the program has been developed with both a main program and test mode.
 to run the program in main mode 
 
@@ -85,7 +105,7 @@ After Concatenate: a?.b?.c?
 Postfix          : a?b?.c?.
         Match found for a?b?.c?. in abc !
 ```
-### Test A Entered Expression Against a File
+### Test An Entered Expression Against a File
 
 - It is important to note that all files must be stored in the '/data' folder and must have suffix `.txt`.
 - This repository has been initilised with a extract from  _Deadlock_ by _Dorothy M. Richardson_ soucred from [Gutenburg](http://www.gutenberg.org/ebooks/56925m) 
@@ -110,6 +130,16 @@ After Concatenate: t.h.e
 Postfix          : th.e.
 Found 49 matches in file!
 ```
+## Operational Flow Of Program
+- Recieve an expression from user (infix or postix).
+- Check expression syntax.
+- If concatenator syntax not included adjust the statement.
+- Check if expression is Infix or Postfix.
+- If Infix , Convert to Postfix.
+- Construct a NFA
+- Check the NFA against a given String.
+- Output statistics and result.
+
 ## Supported Regex Syntax
 I have adjusted the program to adapt to the user input . That meaning if the expression entered is not in the correct syntax with or without the concatenator the program will catch this and make all the necessary changes. Aswell as this the program will convert an expression from infix to postfix notation 
 
@@ -138,13 +168,13 @@ I have adjusted the program to adapt to the user input . That meaning if the exp
 * Visual Studio Code
 * Git
 
-## Research & Design Process
+## Research And Design Process
 
-see [References used for research](##acknowledgments-&-references)
+see [References used for research](##acknowledgments-and-references)
 
 Initially on recieving this project I honestly felt it was out of the scope of my capabilities. For this reason I did not dive straight into the coding process.I  spent my first 2 weeks studying and researching about regular expressions and Finite Automota to ensure I had a clear understanding of what needed to be done. I found a brillant pdf online called **Introduction To The Theory Of Computation** by _Michael-Sipser*_ which can be downloaded [here](http://fuuu.be/polytech/INFOF408/Introduction-To-The-Theory-Of-Computation-Michael-Sipser.pdf)  which really goes into detail about the algorithims behind regular expresions.
 
-The initial coding process began with following the videos posted on the Course module [see](#acknowledgments-&-references). This gave me a good benchmark to start the developement process. Once I understood this code I ran multiple tests to check for bugs and find areas to improve. At this point the program could parse an infix expression to postfix,construct a NFA and check a given string against it.
+The initial coding process began with following the videos posted on the Course module [see](#acknowledgments-and-references). This gave me a good benchmark to start the developement process. Once I understood this code I ran multiple tests to check for bugs and find areas to improve. At this point the program could parse an infix expression to postfix,construct a NFA and check a given string against it.
 
 The first bug I found was that the program was not able to determine between an expression without the concatenator operator. This meaning although checking `a.b.c` against a string was succesfull ,`abc` would cause a fatal exception. After a more in depth reasearch of regular expressions, I could see a pattern and noted what caused a `.` to be added and on what conditions it would be left out. I designed and algorithim for the program to recognise if the concatenator was included or not and if not the expression would be adjusted.
 
@@ -161,7 +191,7 @@ In order to debug the program extensively and repetitively the program was devel
 ## Authors
 * **Kevin Barry** - *Initial work* - [kbarry91](https://github.com/kbarry91)
 
-## Acknowledgments & References
+## Acknowledgments And References
 * **Dr Ian McLoughlin** *lecturer of Graph Theory at G.M.I.T* [Ian McLoughlin](https://github.com/ianmcloughlin)
 * Shunting yard algorithim : http://jacobappleton.io/2015/07/02/regex-ii-the-shunting-yard-algorithm/#tocAnchor-1-7
 * Regular Expression Matching : https://swtch.com/~rsc/regexp/regexp1.html
