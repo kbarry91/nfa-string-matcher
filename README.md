@@ -20,7 +20,7 @@ A program written in Golang that can build a non-deterministic finite automaton 
   * [Limitiations Of The Program](#limitiations-of-the-program)
   * [Authors](#authors)
   * [Acknowledgments & References](#acknowledgments-and-references)
-  * [Screenshot](*screenshot)
+  * [Screenshot](#screenshot)
 
 ## Synopsis
 The probem as stated in the the problem statement provided to us states _'You must write a program in the Go programming language [2] that can build a non-deterministic ﬁnite automaton (NFA) from a regular expression, and can use the NFA to check if the regular expression matches any given string of text. You must write the program from scratch and cannot use the regexp package from the Go standard library nor any other external library.'_
@@ -148,9 +148,9 @@ I have adjusted the program to adapt to the user input . That meaning if the exp
 |:----------------------------:| ------------------------ | ---------------------- |
 | `abc`                        | `a.b.c`                  | `ab.c`                 |
 | `a.b.c`                      | `a.b.c`                  | `ab.c`                 |
-| `abc(d|e)`                   | `a.b.c.(d|e)`            | `ab.c.de|.`            |
+| `abc(d\|e)`                  | `a.b.c.(d\|e)`           | `ab.c.de\|.`           |
 | `a?b?c?`                     | `a?.b?.c?`               | `a?b?.c?.`             |
-| `00(0|1)*`                   | `0.0.(0|1)*`             | `00.01|*.`             |
+| `00(0\|1)*`                  | `0.0.(0\|1)*`            | `00.01\|*.`            |
 
 
 | Pattern                      | Description                                                 |
