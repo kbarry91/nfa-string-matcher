@@ -22,10 +22,12 @@ LoadDataFromFile Loads data from a file and returns a slice of words
 */
 func LoadDataFromFile() []string {
 
-	//filename := utils.UserInput("Enter File Name: ( 'deadlock.txt' )")
-
+	filename := utils.UserInput("Enter File Name:  'deadlock' :")
+	appendFileName :="data/"+filename+".txt"
+	utils.StringPrinter("File loading...")
+	
 	// read from the file
-	file, err := ioutil.ReadFile("data/deadlock.txt")
+	file, err := ioutil.ReadFile(appendFileName)
 	check(err)
 
 	// Parse the file to a string

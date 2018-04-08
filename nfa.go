@@ -6,17 +6,17 @@
 package main
 
 import (
+	filereader "./filereader"
 	shuntingYard "./shuntingYard"
 	testcases "./testcases"
 	thompsons "./thompsons"
 	utils "./utils"
+	"strconv"
 )
 
 func main() {
 	var titleBar = "============= NFA String Main Menu ============="
 	var subMenuBar = "============= String Matcher Menu  ============="
-	//	var testMenu = "============= Test  Menu  ============="
-	//utils.StringPrinter(myString)
 
 	// loop to keep main menu open
 	keepRunning := true
@@ -37,6 +37,7 @@ func main() {
 					StringMatchMode()
 				case "2":
 					utils.StringPrinter("File Match Selected ....")
+					FileFindMode()
 				case "3":
 					utils.StringPrinter("Returning To main menu  ....")
 					returnToMain = true
@@ -106,5 +107,43 @@ func StringMatchMode() {
 FileFindMode enables a user to search the occurences of a matched sexpression in a file
 */
 func FileFindMode() {
+	var testMenu = "============= File Finder  ============="
+	utils.StringPrinter(testMenu)
+
+	// Load a file
+	fileWords := filereader.LoadDataFromFile()
+
+	// Ensure file read is successfull
+	if len(fileWords) > 1 {
+		utils.StringPrinter("File loaded...")
+		var userExp = utils.UserInput("\tEnter Regular Expression :")
+
+		// Ensure expression is in correct syntax
+		var conString = shuntingYard.ConcatenateInfix(userExp)
+
+		// Convert expression from Infix to Postfix Notation
+		var regexExpression = shuntingYard.InfixToPostfix(conString)
+
+		// print some stats
+		utils.StringPrinter("Entered regex    : " + userExp)
+		utils.StringPrinter("After Concatenate: " + conString)
+		utils.StringPrinter("Postfix          : " + regexExpression)
+
+		//set  a counter
+		var counter = 0
+
+		// Step through array to check matches.
+		for _, words := range fileWords {
+			if thompsons.StringMatcher(shuntingYard.InfixToPostfix(regexExpression), words) {
+				counter++
+			}
+		}
+
+		// if matches are found display result
+		utils.StringPrinter("Found " + strconv.Itoa(counter) + " matches in file!")
+
+	} else {
+		utils.StringPrinter("File read unsuccesfull")
+	}
 
 }
