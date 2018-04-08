@@ -3,10 +3,11 @@ Package testCases is used to run tests on various parts of the program
 */
 package testcases
 
-import utils "../utils"
-import shuntingYard "../shuntingYard"
-import filereader "../filereader"
-
+import (
+	utils "../utils"
+ shuntingYard "../shuntingYard"
+ filereader "../filereader"
+)
 
 /*
 TestMenu launches a menu to select a test*/
@@ -84,7 +85,7 @@ func TestFile(){
 	fileWords := filereader.LoadDataFromFile()
 
 	if len(fileWords) > 1{
-		utils.StringPrinter("DEBUG File:\n \tFile read succesfull")
+		utils.StringPrinter("DEBUG File:\n \tFile read successfull")
 
 	}else{
 		utils.StringPrinter("DEBUG File:\n \tFile read unsuccesfull")

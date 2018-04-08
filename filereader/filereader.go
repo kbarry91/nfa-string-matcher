@@ -3,10 +3,10 @@ Package filereader is used to parse data from a file
 */
 package filereader
 
-import utils "../utils"
-import "io/ioutil"
-import "strings"
-
+import ( utils "../utils"
+ "io/ioutil"
+ "strings"
+)
 /*
 check is used to check for file read error
 sourced from : https://gobyexample.com/reading-files
