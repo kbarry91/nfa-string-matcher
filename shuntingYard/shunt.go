@@ -7,8 +7,6 @@ package shuntingyard
 import (
 	"bytes"
 	"fmt"
-
-	utils "../utils"
 )
 
 /*
@@ -72,57 +70,55 @@ func ConcatenateInfix(infix string) string {
 	// loop through the infix
 	for curChar := 0; curChar < len(strArr); curChar++ {
 
-		// if it is the first character append to buffer
+		// if it is the first character append to buffer.
 		if charIsFirst(curChar) {
 			buffer.WriteString(string(strArr[curChar]))
 			continue
 		}
-		// if previous character is already concatenate operator
-		if isConChar(string(strArr[curChar-1])) {
-			buffer.WriteString(string(strArr[curChar]))
-			continue
-		}
 
-		// if char is a special character append to buffer
+		// if character is concatenator dont add it.
+		if isConChar(string(strArr[curChar])) {
+			continue
+		}
+		
+		// if char is a special character  append to buffer.
 		if isSpecials(string(strArr[curChar])) {
+
 			buffer.WriteString(string(strArr[curChar]))
 			continue
 		}
-		// if char is a opening bracket and not first char
+		// if char is a opening bracket and not first char.
 		if !charIsFirst(curChar) && isOpeningBracket(string(strArr[curChar])) {
+
 			buffer.WriteString(".")
 			buffer.WriteString(string(strArr[curChar]))
 			continue
 		}
-		// if char is not first and previous was not  (
+
+		// if char is not first and previous was   (
 		if !charIsFirst(curChar) && isOpeningBracket(string(strArr[curChar-1])) {
 
 			buffer.WriteString(string(strArr[curChar]))
 			continue
 		}
-		/*
-			// if char is not first or last character and next is   )
-			if !(curChar == len(infix)-1) {
-				if !charIsFirst(curChar) && isClosingBracket(string(strArr[curChar])) {
-					//	buffer.WriteString(".")
-					buffer.WriteString(string(strArr[curChar]))
-					continue
-				}
-			}
-
-		*/
+		
 		//if character is closing bracket add to buffer
-		if isClosingBracket(string(strArr[curChar])) {
+		if !charIsFirst(curChar) && isClosingBracket(string(strArr[curChar])) {
 
 			buffer.WriteString(string(strArr[curChar]))
 			continue
 		}
+
+		// If the previous character was not an OR | operater dont add concatante
+		if !charIsFirst(curChar) && isOrOperator(string(strArr[curChar-1])) {
+			buffer.WriteString(string(strArr[curChar]))
+			continue
+		}
+
 		buffer.WriteString(".")
 		buffer.WriteString(string(strArr[curChar]))
-
 	}
 
-	fmt.Println(buffer.String())
 	return buffer.String()
 }
 
@@ -151,15 +147,22 @@ func isSpecials(char string) bool {
 
 	for spec := range specials {
 		if char == specials[spec] {
-			utils.StringPrinter(char)
 			return true
 
 		}
 	}
 	return false
 }
+
 func isConChar(char string) bool {
 	if char == "." {
+		return true
+	}
+	return false
+}
+
+func isOrOperator(char string) bool {
+	if char == "|" {
 		return true
 	}
 	return false
