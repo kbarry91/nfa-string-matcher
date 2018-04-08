@@ -77,18 +77,6 @@ func TestMode() {
 
 	*/
 
-	// DEBUG : userInput
-	// TEST  : test input by entering a string
-	// RESULT: Passedtest
-	var testString = utils.UserInput("DEBUG INPUT: \n \tEnter String to Test: ")
-	utils.StringPrinter("DEBUG INPUT: \n \t " + testString)
-
-	// DEBUG : New shunting package
-	// TEST  : test Converting an inﬁx regular expression (left) to postﬁx (right): a.(b.b)∗.a → abb.∗.a.
-	// RESULT: Passedtest
-	var shunter = shuntingYard.InfixToPostfix("a.(b.b)∗.a")
-	utils.StringPrinter("DEBUG SHUNT:\n \t infix : a.(b.b)∗.a \n \t postfix :  " + shunter)
-
 	// DEBUG :  Thompsons postfix to nfa and string matcher
 	// TEST  :  Enter a string a.+b, test against abbb (should return true)
 	// RESULT:  Test Passed
@@ -104,15 +92,30 @@ func TestMode() {
 // StringMatchMode allows user to enter a regular expression and test it aginst a string
 //
 func StringMatchMode() {
-	var userString = utils.UserInput("\tEnter String to Test: ")
+	utils.StringPrinter("This program has been configured to recognise an expression in infix or postfix notation")
+	utils.StringPrinter("You may enter an expression in older or newer syntax (abc or a.b.c)")
 	var userExp = utils.UserInput("\tEnter Regular Expression :")
-	var isMatch = thompsons.StringMatcher(shuntingYard.InfixToPostfix(userExp), userString)
+	var userString = utils.UserInput("\tEnter String to Test: ")
+
+	// Ensure expression is in correct syntax
+	var conString = shuntingYard.ConcatenateInfix(userExp)
+
+	// Convert expression from Infix to Postfix Notation
+	var regexExpression = shuntingYard.InfixToPostfix(conString)
+
+	// Construct a NFA from the expression and check to see if the expression is found in the String
+	var isMatch = thompsons.StringMatcher(shuntingYard.InfixToPostfix(regexExpression), userString)
+
+	// print some stats
+	utils.StringPrinter("Entered regex    : " + userExp)
+	utils.StringPrinter("After Concatenate: " + conString)
+	utils.StringPrinter("Postfix          : " + regexExpression)
 	switch isMatch {
 	case true:
-		utils.StringPrinter("\tMatch found for " + userExp + " in " + userString)
+		utils.StringPrinter("\tMatch found for " + regexExpression + " in " + userString)
 		break
 	case false:
-		utils.StringPrinter("\tNo Match found for " + userExp + " in " + userString)
+		utils.StringPrinter("\tNo Match found for " + regexExpression + " in " + userString)
 		break
 	default:
 		utils.StringPrinter("\tAn error has occurred ,Please check regex expression and try again")

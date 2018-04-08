@@ -6,7 +6,6 @@ package shuntingyard
 
 import (
 	"bytes"
-	"fmt"
 )
 
 /*
@@ -66,9 +65,17 @@ func ConcatenateInfix(infix string) string {
 
 	var buffer bytes.Buffer
 	strArr := []rune(infix)
-
+	var lastadded= ""
 	// loop through the infix
 	for curChar := 0; curChar < len(strArr); curChar++ {
+
+		// retrive the last added value from the buffer
+		strBuffer := []rune(buffer.String())
+
+		// ensure buffer is not empty 
+		if len(strBuffer) > 1 {
+			 lastadded = string(strBuffer[len(strBuffer)-1])
+		}
 
 		// if it is the first character append to buffer.
 		if charIsFirst(curChar) {
@@ -80,7 +87,7 @@ func ConcatenateInfix(infix string) string {
 		if isConChar(string(strArr[curChar])) {
 			continue
 		}
-		
+
 		// if char is a special character  append to buffer.
 		if isSpecials(string(strArr[curChar])) {
 
@@ -90,9 +97,15 @@ func ConcatenateInfix(infix string) string {
 		// if char is a opening bracket and not first char.
 		if !charIsFirst(curChar) && isOpeningBracket(string(strArr[curChar])) {
 
-			buffer.WriteString(".")
-			buffer.WriteString(string(strArr[curChar]))
-			continue
+			// if previouscharacter is concatenator dont add it.
+			if isConChar(string(lastadded)) {
+				buffer.WriteString(string(strArr[curChar]))
+				continue
+			} else {
+				buffer.WriteString(".")
+				buffer.WriteString(string(strArr[curChar]))
+				continue
+			}
 		}
 
 		// if char is not first and previous was   (
@@ -101,7 +114,7 @@ func ConcatenateInfix(infix string) string {
 			buffer.WriteString(string(strArr[curChar]))
 			continue
 		}
-		
+
 		//if character is closing bracket add to buffer
 		if !charIsFirst(curChar) && isClosingBracket(string(strArr[curChar])) {
 
